@@ -4,7 +4,7 @@ const apiScheduleController = {
     console.log("WE Are IN INDEX 4");
     console.log("RESPONSE", res);
 
-    res.json(res.locals.schedule);
+    res.json(res.locals.data.schedule);
   },
   show(req: Request, res: Response) {
     //console.log("Res full", res);

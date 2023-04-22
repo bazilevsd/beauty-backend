@@ -7,7 +7,7 @@ const dataController = {
       console.log("WE ARE IN HERE");
       const schedule = await Schedule.find({});
       console.log("Backend index", schedule);
-      res.locals.schedule = schedule;
+      res.locals.data.schedule = schedule;
       console.log("assigned res");
     } catch (error) {
       res.status(500).json({ error });

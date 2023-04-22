@@ -8,12 +8,17 @@ import mongoose, { ConnectOptions } from "mongoose";
 import "dotenv/config";
 import bookRouter from "./src/routers/api/bookUser";
 import scheduleRouter from "./src/routers/api/schedule";
+import checkToken from "./src/config/checkToken";
+import usersApi from "../backend/src/routers/api/users";
+import ensureLoggedIn from "./src/config/ensureLoggedIn";
+import userRouter from "./src/routers/api/users";
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(checkToken);
 
 const corsOptions = {
   origin: "*",
@@ -31,6 +36,13 @@ db.once("open", () => {
   console.log("connected to mongo");
 });
 
+app.use((req, res, next) => {
+  res.locals.data = {};
+  next();
+});
+
+app.use(checkToken);
+app.use("/users", userRouter);
 app.use("/schedule", scheduleRouter);
 app.get("api/book", bookRouter);
 
