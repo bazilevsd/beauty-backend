@@ -13,6 +13,7 @@ import usersApi from "../backend/src/routers/api/users";
 import ensureLoggedIn from "./src/config/ensureLoggedIn";
 import userRouter from "./src/routers/api/users";
 import path from "path";
+import favicon from "serve-favicon";
 
 const PORT = process.env.PORT || 3000;
 
@@ -42,6 +43,9 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
+app.use(express.static(path.join(__dirname, "build")));
+
 app.use(checkToken);
 app.use("/users", userRouter);
 app.use("/schedule", scheduleRouter);
@@ -53,12 +57,4 @@ app.get("/", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(chalk.blue(`Server is starting 🚀 on PORT: ${PORT}`));
-});
-
-// Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, "../frontend/build")));
-
-// AFTER defining routes: Anything that doesn't match what's above, send back index.html; (the beginning slash ('/') in the string is important!)
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/../frontend/build/index.html"));
 });
