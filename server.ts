@@ -13,7 +13,7 @@ import usersApi from "../backend/src/routers/api/users";
 import ensureLoggedIn from "./src/config/ensureLoggedIn";
 import userRouter from "./src/routers/api/users";
 import path from "path";
-import favicon from "serve-favicon";
+import favicon from "express-favicon";
 
 const PORT = process.env.PORT || 3000;
 
