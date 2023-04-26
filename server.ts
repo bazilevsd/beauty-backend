@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
+require("dotenv").config();
 import chalk from "chalk";
 import express from "express";
 import morgan from "morgan";
