@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
     "declaration": true,
@@ -22,11 +22,11 @@
     "removeComments": true,
     "outDir": "./dist/tsc/",
     "types": ["node", "jest"],
-    "lib": ["ES6", "DOM"],
-    "ts-node": {
-      "esm": true,
-      "experimentalSpecifierResolution": "node"
-    }
+    "lib": ["ES6", "DOM"]
+    // "ts-node": {
+    //   "esm": true,
+    //   "experimentalSpecifierResolution": "node"
+    // }
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "**/*.test.ts"]
