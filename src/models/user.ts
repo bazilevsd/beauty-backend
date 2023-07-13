@@ -18,6 +18,8 @@ const userSchema = new mongoose.Schema(
       minlength: 3,
       required: true,
     },
+    confirm: { type: String },
+    error: { type: String },
   },
   {
     timestamps: true,

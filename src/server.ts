@@ -4,13 +4,12 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import mongoose, { ConnectOptions } from "mongoose";
-// import "dotenv/config";
-import bookRouter from "./routers/api/bookUser";
-import scheduleRouter from "./routers/api/schedule";
+
 import checkToken from "./config/checkToken";
 // import usersApi from "./routers/api/users";
 // import ensureLoggedIn from "./config/ensureLoggedIn";
 import userRouter from "./routers/api/users";
+import appointmentDayRouter from "./routers/api/appointmentDay";
 import path from "path";
 import favicon from "express-favicon";
 
@@ -47,8 +46,7 @@ app.use(express.static(path.join(__dirname, "build")));
 
 app.use(checkToken);
 app.use("/users", userRouter);
-app.use("/schedule", scheduleRouter);
-app.get("api/book", bookRouter);
+app.use("/setappointment", appointmentDayRouter);
 
 app.get("/", (req, res) => {
   res.json({ message: "Service is alive!" });
