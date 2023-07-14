@@ -41,7 +41,7 @@ try {
     next();
   });
 
-  app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
+  // app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
   app.use(express.static(path.join(__dirname, "build")));
 
   app.use(checkToken);
